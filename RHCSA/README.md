@@ -26,16 +26,16 @@ This is a repository where all of the bullet points for succeeding with RHCSA is
 
 ## Operate running systems
 
-- [ ] Boot, reboot, and shut down a system normally
-- [ ] Boot systems into different targets manually
-- [ ] Interrupt the boot process in order to gain access to a system
-- [ ] Identify CPU/memory intensive processes and kill processes
-- [ ] Adjust process scheduling
-- [ ] Manage tuning profiles
-- [ ] Locate and interpret system log files and journals
-- [ ] Preserve system journals
-- [ ] Start, stop, and check the status of network services
-- [ ] Securely transfer files between systems
+- [x] Boot, reboot, and shut down a system normally
+- [x] Boot systems into different targets manually
+- [x] Interrupt the boot process in order to gain access to a system
+- [x] Identify CPU/memory intensive processes and kill processes
+- [x] Adjust process scheduling
+- [x] Manage tuning profiles
+- [x] Locate and interpret system log files and journals
+- [x] Preserve system journals
+- [x] Start, stop, and check the status of network services
+- [x] Securely transfer files between systems
 
 ## Configure local storage
 

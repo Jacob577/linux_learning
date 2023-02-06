@@ -108,4 +108,29 @@ Thereafter we can limit the allowable space for the journals by modifying:
 `/etc/systemd/journal.conf` and set the max use. Thereafter restart the service using: `systemctl restart systemd-journald`. 
 
 ### Start, stop, and check the status of network services
+In most general terms, starting and stopping local services, we use `systemctl start/stop <service-name>`, tho check the status: `systemctl status <service-name>`, to enable a service and start: `systemctl enable --now <service-name>`. The same with disable. 
+
+Credit: [TheGeekDiary](https://www.thegeekdiary.com/rhel-7-rhcsa-notes-start-stop-and-check-the-status-of-network-services/)
+To list all services we can instead use:
+```bash
+# List all loaded service units
+systemctl list-units --type service --all
+
+# To see which service units are enabled:
+systemctl list-unit-files --type service
+```
+
 ### Securely transfer files between systems
+To securely transfer files and directories between systems we can use `secure transfer protocol` e.i. `scp`. 
+```bash
+scp <path/to/file> <name>@<IP>:<path/to/target/destination>
+
+# Test
+ssh -i ~/.ssh/mykey <user>@<host>
+```
+
+I've noticed it is easier if ssh-keys are saved on the target machine. 
+```bash
+ssh-keygen
+ssh-copy-id <name>@<IP>
+```
