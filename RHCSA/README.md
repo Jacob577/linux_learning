@@ -4,18 +4,18 @@ This is a repository where all of the bullet points for succeeding with RHCSA is
 
 ## Understand and use essential tools
 
-- [ ] Access a shell prompt and issue commands with correct syntax
-- [ ] Use input-output redirection (>, >>, |, 2>, etc.)
-- [ ] Use grep and regular expressions to analyze text
-- [ ] Access remote systems using SSH
-- [ ] Log in and switch users in multiuser targets
-- [ ] Archive, compress, unpack, and uncompress files using tar, star, gzip, and bzip2
-- [ ] Create and edit text files
-- [ ] Create, delete, copy, and move files and directories
-- [ ] Create hard and soft links
-- [ ] List, set, and change standard ugo/rwx permissions
-- [ ] Locate, read, and use system documentation including man, info, and files in  usr/share/doc
-- [ ] Understand and use essential tools
+- [x] Access a shell prompt and issue commands with correct syntax
+- [x] Use input-output redirection (>, >>, |, 2>, etc.)
+- [x] Use grep and regular expressions to analyze text
+- [x] Access remote systems using SSH
+- [x] Log in and switch users in multiuser targets
+- [x] Archive, compress, unpack, and uncompress files using tar, star, gzip, and bzip2
+- [x] Create and edit text files
+- [x] Create, delete, copy, and move files and directories
+- [x] Create hard and soft links
+- [x] List, set, and change standard ugo/rwx permissions
+- [x] Locate, read, and use system documentation including man, info, and files in  usr/share/doc
+- [x] Understand and use essential tools
 
 
 ## Create simple shell scripts
