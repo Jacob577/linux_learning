@@ -1,6 +1,6 @@
 # RHCSA criterions
 
-This is a repository where all of the bullet points for succeeding with RHCSA is mentioned. 
+This is a repository where all of the bullet points for succeeding with RHCSA is mentioned. All of these bullet points are fetched from [Red Hats](https://www.redhat.com/en/services/training/ex200-red-hat-certified-system-administrator-rhcsa-exam?section=Objectives) official website however, there are topics added for further understanding of the topics, it is not a straight copy of the list given by RedHat. 
 
 ## Understand and use essential tools
 
@@ -19,10 +19,10 @@ This is a repository where all of the bullet points for succeeding with RHCSA is
 
 
 ## Create simple shell scripts
-- [ ] Conditionally execute code (use of: if, test, [], etc.)
-- [ ] Use Looping constructs (for, etc.) to process file, command line input
-- [ ] Process script inputs ($1, $2, etc.)
-- [ ] Processing output of shell commands within a script
+- [x] Conditionally execute code (use of: if, test, [], etc.)
+- [x] Use Looping constructs (for, etc.) to process file, command line input
+- [x] Process script inputs ($1, $2, etc.)
+- [x] Processing output of shell commands within a script
 
 ## Operate running systems
 
