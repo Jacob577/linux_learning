@@ -85,7 +85,10 @@ Journal entries based on process:
 `journalctl -u <process>` e.i. sshd
 
 We can check the logs based on time with:
-`journalctl -u httpd -since "1 hour ago"`
+`journalctl -u <service> -since "1 hour ago"`
+
+You can also use `-p crit` as a flag to receive critical messages
+`journalctl -p crit`
 
 Individual logs are located in `/var/logs/` here we can also access `messages` and `secure`. 
 
