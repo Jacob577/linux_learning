@@ -48,8 +48,8 @@ This is a repository where all of the bullet points for succeeding with RHCSA is
 
 ## Create and configure file systems
 
-- [ ] Create, mount, unmount, and use vfat, ext4, and xfs file systems
-- [ ] Mount and unmount network file systems using NFS
+- [x] Create, mount, unmount, and use vfat, ext4, and xfs file systems
+- [x] Mount and unmount network file systems using NFS
 - [ ] Configure autofs
 - [ ] Extend existing logical volumes
 - [ ] Create and configure set-GID directories for collaboration
