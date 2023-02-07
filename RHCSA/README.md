@@ -39,12 +39,12 @@ This is a repository where all of the bullet points for succeeding with RHCSA is
 
 ## Configure local storage
 
-- [ ] List, create, delete partitions on MBR and GPT disks
-- [ ] Create and remove physical volumes
-- [ ] Assign physical volumes to volume groups
-- [ ] Create and delete logical volumes
-- [ ] Configure systems to mount file systems at boot by universally unique ID (UUID) or label
-- [ ] Add new partitions and logical volumes, and swap to a system non-destructively
+- [x] List, create, delete partitions on MBR and GPT disks
+- [x] Create and remove physical volumes
+- [x] Assign physical volumes to volume groups
+- [x] Create and delete logical volumes
+- [x] Configure systems to mount file systems at boot by universally unique ID (UUID) or label
+- [x] Add new partitions and logical volumes, and swap to a system non-destructively
 
 ## Create and configure file systems
 
