@@ -44,9 +44,38 @@ vi /etc/auto.map
 systemctl enable --now autofs.service
 
 ```
+
 ### Configure autofs
+Look above
+
 
 ### Extend existing logical volumes
-Extending a volume isn't terrificly dificult, unmount the volume, make sure the file systems are the same. th
+Extending a volume isn't terrificly dificult, unmount the volume, make sure the file systems are the same. Then `lvextend -L <size> <path/to/LV> <path/to/PV>`
+Or if the LV is mounted on a VG, just `lvextend <LV/path> -L <size>`
+
+Side note, lvextend has a great manual for related commands, have a look there if something else is unclear! 
 ### Create and configure set-GID directories for collaboration
+[Great resource](https://linuxconfig.org/create-and-configure-setgid-directories-for-collaboration-rhcsa-objective-preparation)
+
+If we'd like to create a collab directory:
+```bash
+mkdir -p /shared/collab
+
+useradd john
+useradd doe
+
+groupadd collaborators
+usermodd -aG collaborators john doe
+
+chown -R :collaborators /shared/collab
+
+chmod 770 /shared/collab
+
+# We could add the -R flag to apply permissions to subsequent directories
+# Thereafter we can add the setgid flag to permissions:
+chmod g+s /shared/collab
+
+# Now they can collaborate properly on projects within this directory!
+```
+
 ### Diagnose and correct file permission problems

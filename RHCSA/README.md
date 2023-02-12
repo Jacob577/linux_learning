@@ -52,7 +52,7 @@ This is a repository where all of the bullet points for succeeding with RHCSA is
 - [x] Mount and unmount network file systems using NFS
 - [ ] Configure autofs
 - [ ] Extend existing logical volumes
-- [ ] Create and configure set-GID directories for collaboration
+- [x] Create and configure set-GID directories for collaboration
 - [ ] Diagnose and correct file permission problems
 
 ## Deploy, configure, and maintain systems
