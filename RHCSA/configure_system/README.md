@@ -65,7 +65,7 @@ useradd john
 useradd doe
 
 groupadd collaborators
-usermodd -aG collaborators john doe
+usermod -aG collaborators john doe
 
 chown -R :collaborators /shared/collab
 

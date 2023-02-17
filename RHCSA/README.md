@@ -51,7 +51,7 @@ This is a repository where all of the bullet points for succeeding with RHCSA is
 - [x] Create, mount, unmount, and use vfat, ext4, and xfs file systems
 - [x] Mount and unmount network file systems using NFS
 - [ ] Configure autofs
-- [ ] Extend existing logical volumes
+- [x] Extend existing logical volumes
 - [x] Create and configure set-GID directories for collaboration
 - [ ] Diagnose and correct file permission problems
 
@@ -66,10 +66,10 @@ This is a repository where all of the bullet points for succeeding with RHCSA is
 
 ## Manage basic networking
 
-- [ ] Configure IPv4 and IPv6 addresses
-- [ ] Configure hostname resolution
-- [ ] Configure network services to start automatically at boot
-- [ ] Restrict network access using firewall-cmd/firewall
+- [x] Configure IPv4 and IPv6 addresses
+- [x] Configure hostname resolution
+- [x] Configure network services to start automatically at boot
+- [x] Restrict network access using firewall-cmd/firewall
 
 ## Manage security
 
