@@ -73,15 +73,15 @@ This is a repository where all of the bullet points for succeeding with RHCSA is
 
 ## Manage security
 
-- [ ] Configure firewall settings using firewall-cmd/firewalld
-- [ ] Manage default file permissions
-- [ ] Configure key-based authentication for SSH
-- [ ] Set enforcing and permissive modes for SELinux
-- [ ] List and identify SELinux file and process context
-- [ ] Restore default file contexts
-- [ ] Manage SELinux port labels
-- [ ] Use boolean settings to modify system SELinux settings
-- [ ] Diagnose and address routine SELinux policy violations
+- [x] Configure firewall settings using firewall-cmd/firewalld
+- [x] Manage default file permissions
+- [x] Configure key-based authentication for SSH
+- [x] Set enforcing and permissive modes for SELinux
+- [x] List and identify SELinux file and process context
+- [x] Restore default file contexts
+- [x] Manage SELinux port labels
+- [x] Use boolean settings to modify system SELinux settings
+- [x] Diagnose and address routine SELinux policy violations
 
 ## Manage containers
 
