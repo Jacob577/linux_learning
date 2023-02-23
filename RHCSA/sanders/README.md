@@ -52,13 +52,34 @@ exit
 <br>
 3. Set default values for new users. Set the default password validity to
 90 days, and set the first UID that is used for new users to 2000.
+```bash
+vi /etc/login.defs
+[...]
+PASS_MAX_DAYS   90
+...
+UID_MIN         2000
+[...]
+```
+- many group and user settings are located under login.defs
+
 <br>
 4. Create a 2-GiB volume group, using 8-MiB physical extents. In this volume
 group, create a 500-MiB logical volume with the name mydata, and mount
 it persistently on the directory /mydata.
+```bash
+vgcreate -s 8M -L +2G myvg /dev/sdd1
+lvcreate -n mydata -L +500M myvg
+mkfs.xfs /dev/myvg-mydata
+
+# In fstab
+/dev/mapper/myvg/mydata /mydata xfs defaults    0   0
+```
 <br>
-5. Find all files that are owned by user edwin and copy them to the directory
-/rootedwinfiles.
+5. Find all files that are owned by user student and copy them to the directory
+/rootstudentfiles.
+```bash
+find / -user student -exec cp "{}" /rootstudentfiles   \;
+```
 <br>
 6. Schedule a task that runs the command touch /etc/motd every day from
 Monday through Friday at 2 a.m.
