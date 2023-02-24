@@ -83,27 +83,103 @@ find / -user student -exec cp "{}" /rootstudentfiles   \;
 <br>
 6. Schedule a task that runs the command touch /etc/motd every day from
 Monday through Friday at 2 a.m.
+```bash
+crontab -u root -e
+0 14 * * 1-5 root bash touch /etc/motd
+```
 <br>
 7. Add a new 10 GiB virtual disk to your virtual machine. On this disk, add
 a VDO volume with a size of 20 GiB and mount it persistently.
+```bash
+# To see the available disks
+lsblk
+vdo create --name=vdo0 --device=/dev/sdc --vdoLogicalSize=20G
+
+# Check VDO details
+vdostats
+
+mkdir /myvdo
+
+# Copy over the unit file example for VDOs
+cp -v /usr/share/doc/vdo/examples/systemd/VDO.mount.example /etc/systemd/system/vdo0.mount
+
+# Modify the unit file accordingly
+# Remember that the name of the unit file needs to have the same name as mount point
+systemctl enable --now vdo0.mount
+
+# or add to fstab
+man vdo | grep -ni "/dev/mapper/vdo0 /vdo" >> /etc/fstab
+vi /etc/fstab
+# Remove bloat in entry
+
+# Check so that the VDO is mounted correctly
+lsblk
+```
 <br>
 8. Install the vsftpd service and ensure that it is started automatically at reboot.
+```bash
+dnf install vsftp 
+
+systemctl enable --now vsfpd
+```
 <br>
 9. Create a 1-GB XFS partition on /dev/sdb. Mount it persistently on the
 directory /mydata, using the label mylabel.
+```bash
+fdisk /dev/sdd
+mkfs.xfs -L mydata /dev/sdd2
+
+# In fstab:
+/dev/sdd2   /myxfs  xfs defaults    0   0
+
+mount -a
+```
 <br>
 10. Set default values for new users. Ensure that an empty file with the
 name NEWFILE is copied to the home directory of each new user that
 is created.
+```bash
+cd /etc/skel
+touch NEWFILE
+```
 <br>
 11. Create a 2-GiB swap partition and mount it persistently.
+```bash
+fdisk /dev/sdd
+# Choose to format as swap
+
+mkswap /dev/sdd3
+swapoff
+
+# Swap on manually
+swapon /dev/sdd3
+
+# In fstab, comment out previous swap
+/dev/sdd3   none    swap    defaults    0   0
+swapon
+```
 <br>
 12. Resize the LVM logical volume that contains the root file system and
 add 1 GiB.
+```bash
+lvextend -L +1G /dev/myvg/mydata
+```
 <br>
 13. Set your server to use the recommended tuned profile.
+```bash
+tuned-adm recommend
+(virtual)
+
+tuned-adm profile virtual-guest
+```
 <br>
 14. Create user vicky with the custom UID 2008.
+```bash
+useradd -u 2008 vicky
+
+# Check:
+cat /etc/passwd | grep -ni vicky
+```
 <br>
 15. Configure your server to synchronize time with myserver.example.com.
 (Note that this server does not have to exist.)
