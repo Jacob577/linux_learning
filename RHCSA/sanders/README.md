@@ -183,16 +183,64 @@ cat /etc/passwd | grep -ni vicky
 <br>
 15. Configure your server to synchronize time with myserver.example.com.
 (Note that this server does not have to exist.)
+```bash
+timedatectl set-ntp true
+firewall-cmd --add-service=ntp --permanent
+firewall-cmd --reload
+
+# Go to chrony.conf
+vi /etc/chrony.conf
+
+# At the very top, there should say pool or server, something similar there we add the ip
+server pool.ntp.org
+
+# Or in our case:
+server myserver.example.com iburst
+
+systemctl stop/disable ntp
+systemctl enable --now chronyd
+
+# To get into chronys interactive, use
+chronyc
+
+# To see what servers we are connected to in chronyc:
+sources
+```
+
 <br>
 16. Install a web server and ensure that it is started automatically.
+```bash
+dnf install httpd -y
+firewall-cmd --permanent --add-service=http
+firewall-cmd --permanent --add-port=80/tcp (can also add 8080)
+firewall-cmd --reload
+
+systemctl enable --now httpd
+
+```
 <br>
 17. Set default values for new users. Make sure that any new user password has
 a length of at least six characters and must be used for at least three days
 before it can be reset.
+```bash
+vi /etc/login.defs
+
+PASS_MIN_SAYS   3
+PASS_MIN_LEN    6
+```
 <br>
 18. Create users edwin and santos and make them members of the group sales as
 a secondary group membership. Also, create users serene and alex and make
 them members of the group account as a secondary group.
+```bash
+groupadd sales
+groupadd account
+
+useradd -g account serena
+useradd -g account alex
+useradd -g sales edwin
+useradd -g sales santos
+```
 <br>
 19. Create shared group directories /groups/sales and /groups/account, and
 make sure these groups meet the following requirements:
@@ -200,18 +248,55 @@ make sure these groups meet the following requirements:
 ■ Members of the group account have full access to their directory.
 ■ Users have permissions to delete only their own files, but Alex is the
 general manager, so user alex has access to delete all users’ files.
+```bash
+mkdir -p /groups/sales
+mkdir -p /groups/account
+
+chown nobody:sales /groups/sales
+chown nobody:account /groups/account
+
+chown alex:sales /groups/sales
+chown alex:account /group/account
+
+chmod -R ug+rwx account
+chmod -R ug+rwx sales
+
+chmod -R o+t account
+chmod -R o+t sales
+```
 <br>
 20. Configure a web server to use the non-default document root /webfiles. In this
 directory, create a file index.html that has the contents hello world and then
 test that it works. (and make it compliant with SELinux)
+```bash
+# Install httpd and configure firewall & SELinux
+
+semanage fcontext -a -t httpd_sys_content_t "/directory(/.*)?"
+restorecon -R -v /directory
+
+vi /etc/httpd/conf/httpd.conf
+[...]
+DocumentRoot "/directory"
+[...]
+
+systemctl enable --now httpd
+systemctl restart httpd
+```
 <br>
-21. Create a 500-MiB partition on your second hard disk, and format it with
-the Ext4 file system. Mount it persistently on the directory /mydata, using
-the label mydata.
-<br>
-22. Add a 10-GiB disk to your virtual machine. On this disk, create a Stratis pool
+21. Add a 10-GiB disk to your virtual machine. On this disk, create a Stratis pool
 and volume. Use the name stratisvol for the volume, and mount it persistently
 on the directory /stratis.
+```bash
+dnf install stratisd
+dnf install stratis-cli
+
+systemctl enable --now stratisd
+
+stratis pool create stratis_pool /dev/sdb
+stratis filesystem create stratis_pool stratis_fs
+
+
+```
 
 #### Finisher:
 Start a webserver using pods, it shall have persistant storage, start at boot in a non root repository. It shall use the port 7070. 
