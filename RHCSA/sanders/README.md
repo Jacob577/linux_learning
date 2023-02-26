@@ -295,8 +295,23 @@ systemctl enable --now stratisd
 stratis pool create stratis_pool /dev/sdb
 stratis filesystem create stratis_pool stratis_fs
 
+# Easy way of adding stratis vol to fstab
+stratis pool list
+echo "path" >> /etc/fstab
 
+# In fstab
+"path" /mount-point xfs x-systemd.requires=stratisd.service 0   0
+mount -a
 ```
+
+### Difficulties:
+I found it difficult utilizing all of the functionality from find, but now I know there is a flag, `--exec` which makes it possible to execute commands with the results from find. We can search for permissions `--perm`, or owner `--users`. But also just `--name`.
+
+When mounting a VDO, we need to name the .mount same as the directory it shall be mounted on on the unit file.
+
+When mounting a stratis vol; it is important to not use `defaults`, I shall use: `x-systemd.requires=stratisd.service`. There is a hint of this in `man vdo`. 
+
+To add a time service, add it to `/etc/chrony.conf` as a server, we can add `burst` or `iburst`, though `iburst` can be considered aggressive and may be prohibited by some time services. To check if the servicce has been registred; `chronyc` --> `source`. 
 
 #### Finisher:
 Start a webserver using pods, it shall have persistant storage, start at boot in a non root repository. It shall use the port 7070. 
