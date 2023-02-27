@@ -66,8 +66,7 @@ systemctl deamon-reload
 <br>
 10. Create pool and filesystem for thin provisioning and snapshots.
 ```bash
-podman search --compatible httpd
-... # No internet connection
+lvcreate -s --thinpool vg001/pool origin_volume --name mythinsnap
 ```
 <br>
 11. Login to the registry. Download image of a web server. Run the web server in a container as a user-service on port 8080, sharing files from /home/user/webfiles. Ensure the web server is available across reboots. Add persistant storage.
