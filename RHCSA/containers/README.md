@@ -71,4 +71,14 @@ To attach persistant storage, use:
 ```bash
 podman run --privileged -it -v /home/jacob/containers/disk1:/mnt docker.io/library/httpd /bin/bash
 # This way, we'll also get a terminal
+
+# Another way of attaching persistant storage
+podman run -dit --volume /container_drive:/mnt docker.io/clearlinux/httpd 
+
+# Remember to add the z, otherwise container won't be able to access the storage
+podman run -dit --volume /container_drive:/home:z docker.io/clearlinux/httpd
+
 ```
+
+### Final task
+start an apache container running on port 8080, enable it accross reboots and assign it to the user jacob and add a file in the containers persistand storage which say success! 
