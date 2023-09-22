@@ -118,11 +118,15 @@ According to CertDepot, Objectives around Virtualization and LDAP configuration 
 19. Create an NFS server and connect a client with autofs
 ```bash
 # Create an exports file
-mkdir /nfs_share
+mkdir /share
+
+# On server
+chmod -R 777 /share
 
 vi /etc/exports
-/nfs_share *(rw,sync)
+/share *(rw,sync,no_root_squash)
 exportfs
+
 
 
 ```
